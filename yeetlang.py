@@ -97,6 +97,8 @@ class interpreter:
                         for i in range(split_line[1].count('[')):
                             index = memory[index]
                         output = index
+                    while output > len(memory) - 1:
+                        memory.append(0)
                     print(chr(int(memory[output])),end="")
 
                 elif line [0:5] == "yote ":
@@ -185,14 +187,14 @@ class interpreter:
         output = []
         raw = []
         with open(file,'r') as f:
-            for line in f:
-                if not line[:-1] == "":
-                    output.append(line[:-1])
-                raw.append(line[:-1])
+            for line in f.read().splitlines():
+                if not line == "":
+                    output.append(line)
+                raw.append(line)
         return output,raw
 
 args = sys.argv[:]
 try:
     interpreter(args[1])
 except:
-    print("No args passed")
+    pass

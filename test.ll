@@ -1,7 +1,4 @@
-a;b;c
-a yoink 48
-yeet_false
-a yoink [a]+1
+a
+a yoink sin(5)
+a yoink [a] + 49
 yeet a
-a yeequals 57; yeet_true; yeet_false
-yeet_true
