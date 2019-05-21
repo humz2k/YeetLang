@@ -74,6 +74,14 @@ yeet b
 
 This will print `A`.
 
+To output a number, use the keyword `yoink`.
+
+```
+b yoink 65.5
+yoink b
+```
+
+This will print `65.5`
 
 
 ### Inputting variables
