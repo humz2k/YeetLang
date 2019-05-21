@@ -4,6 +4,8 @@
 
 YeetLang is an esoteric programming language that centers around the word **"yeet"**. All syntax contains either the word yeet or words associated with yeet.
 
+Download the latest release from: https://github.com/humz2k/YeetLang/releases
+
 
 
 ### Initializing variables
