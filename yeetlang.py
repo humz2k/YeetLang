@@ -101,7 +101,7 @@ class interpreter:
                         memory.append(0)
                     print(chr(int(memory[output])),end="")
 
-                elif line [0:5] == "yote ":
+                elif line[0:5] == "yote ":
                     split_line = line.split(" ")[::-1]
                     if split_line[0].isdigit():
                         output = int(split_line[0])
@@ -120,6 +120,26 @@ class interpreter:
                     while output > len(memory) - 1:
                         memory.append(0)
                     memory[output] = ord(readchar.readchar().decode())
+
+                elif line[0:6] == "yoink ":
+                    split_line = line.split(" ")
+                    if split_line[1].isdigit():
+                        output = int(split_line[1])
+                    elif split_line[1] in self.variables:
+                        output = self.variables.index(split_line[1])
+                    else:
+                        index = "".join(e for e in split_line[1] if e.isalpha())
+                        if index in self.variables:
+                            index = self.variables.index(index)
+                        index = int(index)
+                        while index > len(memory) - 1:
+                            memory.append(0)
+                        for i in range(split_line[1].count('[')):
+                            index = memory[index]
+                        output = index
+                    while output > len(memory) - 1:
+                        memory.append(0)
+                    print(memory[output],end="")
 
                 elif " yeequals " in line or " yeeter " in line or " yoinker " in line:
                     jumps = line.split("; ")
