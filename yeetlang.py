@@ -8,6 +8,12 @@ def evaluate(expression):
     ldict = {}
     exec(expression,globals(),ldict)
     a = ldict['a']
+
+    try:
+        a = int(a)
+    except:
+        print("An error occurred - tried to assign a variable to something that wasn't an integer")
+        sys.exit();
     return a
 
 class interpreter:
