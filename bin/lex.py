@@ -6,7 +6,7 @@ def get_lexer(filename = "tokens.txt",variables = []):
         raw = [i.split() for i in f.read().splitlines() if (not i.startswith("//")) and (not len(i) == 0)]
 
     for i in variables:
-        lexer.add("VAR",i)
+        lexer.add("VAR",r"\b"+i+r"\b")
 
     for i in raw:
         if i[0] == "IGNORE":

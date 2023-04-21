@@ -1,4 +1,4 @@
-import aster
+import aster as aster
 from rply import ParserGenerator
 from rply.token import Token
 
@@ -112,7 +112,7 @@ def get_parser(filename="tokens.txt"):
         
     @pg.error
     def error_handler(token):
-        print("ERROR:", token)
+        print("ERROR:", token, token.source_pos)
         exit()
 
     out = pg.build()

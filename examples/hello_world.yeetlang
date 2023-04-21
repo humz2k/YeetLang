@@ -1,0 +1,35 @@
+index;start;end
+
+index yoink start
+end yoink index + 12
+[index] yoink 'H'
+index yoink index + 1
+[index] yoink 'e'
+index yoink index + 1
+[index] yoink 'l'
+index yoink index + 1
+[index] yoink 'l'
+index yoink index + 1
+[index] yoink 'o'
+index yoink index + 1
+[index] yoink '\s'
+index yoink index + 1
+[index] yoink 'W'
+index yoink index + 1
+[index] yoink 'o'
+index yoink index + 1
+[index] yoink 'r'
+index yoink index + 1
+[index] yoink 'l'
+index yoink index + 1
+[index] yoink 'd'
+index yoink index + 1
+[index] yoink '!'
+index yoink index + 1
+index yoink start
+
+start_loop
+yeet [index]
+index yoink index + 1
+index yeequals end; end_loop; start_loop
+end_loop

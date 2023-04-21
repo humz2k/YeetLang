@@ -20,10 +20,11 @@ if __name__ == "__main__":
     with open(filename,"r") as f:
         raw = f.read()
 
-    variables = raw.split("\n")[0].split(";")
+    variables = [i.strip() for i in raw.split("\n")[0].split(";")]
     raw = "\n" + "\n".join(raw.split("\n")[1:])
 
-    token_file = "tokens.txt"
+    #token_file = "tokens.txt"
+    token_file = "/".join(os.path.realpath(__file__).split("/")[:-1]) + "/tokens.txt"
 
     lexer = lex.get_lexer(token_file,variables)
 
@@ -57,7 +58,8 @@ if __name__ == "__main__":
     with open(tmp_file,"w") as f:
         f.write(out)
 
+    #compile_line = 
     os.system("gcc " + tmp_file +  " -o " + outfile)
-
-    os.remove(outfile)
+    #print(compile_line)
+    os.remove(tmp_file)
 

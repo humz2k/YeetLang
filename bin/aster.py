@@ -121,6 +121,11 @@ class Char:
     def __init__(self,value,lineno):
         self.value = value
         self.lineno = lineno
+    
+    def eval(self):
+        if self.value.value == "'\s'":
+            return "' '"
+        return self.value.value
 
 class Float:
     def __init__(self,value,lineno):
