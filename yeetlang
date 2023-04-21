@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+
+import lex
+import parse
+import os
+import sys
+
+if __name__ == "__main__":
+
+    args = sys.argv[1:]
+
+    if len(args) != 2:
+        print("USAGE: " + sys.argv[0] + " <inputfile> <outputfile>")
+        exit()
+
+    filename = args[0]
+    tmp_file = filename.split(".")[0] + "_YEET_TMP.c"
+    outfile = args[1]
+
+    with open(filename,"r") as f:
+        raw = f.read()
+
+    variables = raw.split("\n")[0].split(";")
+    raw = "\n" + "\n".join(raw.split("\n")[1:])
+
+    token_file = "tokens.txt"
+
+    lexer = lex.get_lexer(token_file,variables)
+
+    tokens = lexer.lex(raw)
+
+    #for token in tokens:
+    #    print(token)
+    #exit()
+
+    parser = parse.get_parser(token_file)
+
+    base = parser.parse(tokens)
+
+    out = base.eval()
+
+    header = """#include <stdlib.h>
+    #include <stdio.h>
+    union Addr {
+        int asInt;
+        float asFloat;
+    };
+    typedef union Addr addr;
+
+    """
+    main = "int main(){\n\taddr* arr = malloc(100*sizeof(addr));\n\t" + ";\n\t".join(["addr " + i + ";" + i + ".asInt = " + str(idx) for idx,i in enumerate(variables)]) + ";\n"
+
+    end = "\tfree(arr);\n\treturn 0;\n}"
+
+    out = header + main + out + end
+
+    with open(tmp_file,"w") as f:
+        f.write(out)
+
+    os.system("gcc " + tmp_file +  " -o " + outfile)
+
+    os.remove(outfile)
+

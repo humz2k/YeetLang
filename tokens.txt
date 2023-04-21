@@ -1,0 +1,29 @@
+CHAR \'\w\'
+NUMBER [+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)
+PLUS \+
+MINUS \-
+STAR \*
+SLASH \/
+PERCENT \%
+
+YOINK \byoink\b
+YEET \byeet\b
+YOTE \byote\b
+
+YFLOAT \byfloat\b
+YINT \byint\b
+
+YEEQUALS \byeequals\b
+YEETER \byeeter\b
+YOINKER \byoinker\b
+
+OPEN_SQUARE \[
+CLOSE_SQUARE \]
+OPEN_PAREN \(
+CLOSE_PAREN \)
+
+SEMI_COLON \;
+
+JUMP [a-zA-Z_0-9]+
+
+IGNORE \s+

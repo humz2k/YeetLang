@@ -4,8 +4,6 @@
 
 YeetLang is an esoteric programming language that centers around the word **"yeet"**. All syntax contains either the word yeet or words associated with yeet.
 
-Download the latest release from: https://github.com/humz2k/YeetLang/releases
-
 
 
 ### Initializing variables
@@ -83,22 +81,6 @@ yoink b
 
 This will print `65.5`
 
-
-### Inputting variables
-
-You can input one character to a variable using the keyword `yote`. This will take a single character as input, and set the variable after the keyword to the ascii code of the inputted value.
-
-For example:
-
-```
-yote b
-yeet b
-```
-
-With this, if I pressed the key `a`, an `a` would be printed to the screen.
-
-
-
 ### Comparisons
 
 The syntax for comparisons are as follows:
@@ -119,10 +101,6 @@ The different comparators and their equivalents are:
 | yeeter   | >      |
 | yoinker  | <      |
 
-In an expression, referencing a variable will reference the *contents* of the variable - `b` will refer to the contents of the variable b.
-
-For example, `b yeequals 5` will check if the contents of b are equal to 5.
-
 A simple if statement would look like:
 
 ```
@@ -137,15 +115,12 @@ A simple loop would look like
 
 ```
 false
-b yoink [b] + 1
+b yoink b + 1
 b yeequals 5; true; false
 true
 ... continue
 ```
 
+# Floating point
 
-
-### Comments
-
-Any line without a keyword is ignored by the interpreter, and is thus a comment.
-
+In an expression, a variable can be interpreted as a float using `yfloat(expression)`. In an assign, you interpret the address as a float using `yfloat reference`. You can print as an int using `yeet yint reference`, and you can print as a float using `yeet yfloat reference`.
