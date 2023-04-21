@@ -110,6 +110,8 @@ venv.bak/
 .dmypy.json
 dmypy.json
 
+examples/*.o
+
 /Releases
 # Pyre type checker
 .pyre/

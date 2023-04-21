@@ -9,13 +9,22 @@ if __name__ == "__main__":
 
     args = sys.argv[1:]
 
-    if len(args) != 2:
-        print("USAGE: " + sys.argv[0] + " <inputfile> <outputfile>")
+    if len(args) == 1:
+        if args[0] == "--help" or args[0] == "-h":
+            print("USAGE: " + sys.argv[0] + " <inputfile> <outputfile> [memory (bytes)]")
+            exit()
+
+    if (len(args) != 2) and (len(args) != 3):
+        print("USAGE: " + sys.argv[0] + " <inputfile> <outputfile> [memory (bytes)]")
         exit()
 
     filename = args[0]
     tmp_file = filename.split(".")[0] + "_YEET_TMP.c"
     outfile = args[1]
+    if len(args) == 3:
+        memory = str(int(args[2])//4)
+    else:
+        memory = "100"
 
     with open(filename,"r") as f:
         raw = f.read()
@@ -49,7 +58,7 @@ if __name__ == "__main__":
     typedef union Addr addr;
 
     """
-    main = "int main(){\n\taddr* arr = malloc(100*sizeof(addr));\n\t" + ";\n\t".join(["addr " + i + ";" + i + ".asInt = " + str(idx) for idx,i in enumerate(variables)]) + ";\n"
+    main = "int main(){\n\taddr* arr = malloc(" + memory + "*sizeof(addr));\n\t" + ";\n\t".join(["addr " + i + ";" + i + ".asInt = " + str(idx) for idx,i in enumerate(variables)]) + ";\n"
 
     end = "\tfree(arr);\n\treturn 0;\n}"
 
@@ -58,8 +67,12 @@ if __name__ == "__main__":
     with open(tmp_file,"w") as f:
         f.write(out)
 
+    if "YEET_CC" in os.environ:
+        cc = os.environ["YEET_CC"]
+    else:
+        cc = "gcc"
     #compile_line = 
-    os.system("gcc " + tmp_file +  " -o " + outfile)
+    os.system(cc + " " + tmp_file +  " -o " + outfile)
     #print(compile_line)
     os.remove(tmp_file)
 
